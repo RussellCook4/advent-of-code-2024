@@ -28,12 +28,11 @@ def safety(array):
     array = convert_to_int_if_needed(array)
     if len(array) == 1 or len(array) == 0:
         return 1
-    if array[0] <= array[1]:
-        increasing = True
-    elif array[0]>= array[1]:
-        increasing = False
+    increasing = (array[0] <= array[1])
+
     for i in range(1,len(array)):
-        if abs(array[i] - array[i-1]) > 3 or array[i] == array[i-1] or (increasing and array[i] < array[i-1]) or (not increasing and array[i] > array[i-1]):
+        increasing_check = (array[i] >= array[i-1])
+        if abs(array[i] - array[i-1]) > 3 or array[i] == array[i-1] or (increasing != increasing_check):
             return 0
     return 1
         

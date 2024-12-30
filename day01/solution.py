@@ -1,6 +1,5 @@
 from aocd import get_data
 import os
-import json
 
 #load_dotenv()
 session = os.getenv("SESSION_COOKIE")
@@ -18,8 +17,9 @@ list1 = []
 list2 = []
 
 for i in range(len(data2)):
-        list1.append(data2[i].split()[0])
-        list2.append(data2[i].split()[1])
+        left, right = data2[i].split()
+        list1.append(left)
+        list2.append(right)
 
 list1.sort()
 list2.sort()
@@ -40,6 +40,20 @@ for i in range(len(list1)):
     similarity_score += abs(int(list1[i]))*occurences
 print(similarity_score)
 
+# v2 - improving runtime with a dict
+
+left_dict = {}
+for i in range(len(list1)):
+    if list1[i] in left_dict:
+        left_dict[list1[i]] += 1
+        print(left_dict)
+    else:
+        left_dict[list1[i]] = 1
+similarity_score = 0
+for i in range(len(list2)):
+    if list2[i] in dict:
+        similarity_score += abs(int(list2[i]))*dict[list2[i]]
+print(similarity_score)
 
     
 
