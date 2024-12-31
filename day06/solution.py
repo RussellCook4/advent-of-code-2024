@@ -108,8 +108,6 @@ def is_a_loop(start_pos, start_direction,map):
 
 
 positions = 0
-counter = 0
-
 
 for i, j in visited_locations:
     print(f"i: {i}, j: {j}")
